@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .slide {
+        @apply absolute w-full h-full opacity-0 transition-transform ease-out duration-500
+    }
+
+    .current-slide {
+        @apply opacity-100
+    }
+}
