@@ -29,7 +29,7 @@ const AdminPanel = () => {
                     <FontAwesomeIcon icon={ faBuilding } />
                     <span className="pl-8">Venues</span>
                 </NavLink>
-               {localStorage.getItem("role") === "SUPERADMIN" && <NavLink
+               {localStorage.getItem("userRole") === "SUPERADMIN" && <NavLink
                     to="/admin-panel/users"
                     className={ ({ isActive }) => isActive ? "underline font-semibold text-neutral-25" : "text-neutral-300" }
                 >
