@@ -37,7 +37,6 @@ const AddVenue = () => {
             try {
                 const response = await axios.get(`${url}${cities}`);
                 setCityList(response.data);
-                console.log("cities", response.data)
             } catch (error) {
                 console.error("Error loading cities:", error);
             }

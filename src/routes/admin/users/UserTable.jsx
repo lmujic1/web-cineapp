@@ -60,7 +60,6 @@ const UserTable = ({ type, selectable = false, actions = false }) => {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
-            console.log('res deactivate', response.data)
             setDeleteModal(false)
         } catch (err) {
             console.log(err);
@@ -86,7 +85,6 @@ const UserTable = ({ type, selectable = false, actions = false }) => {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
-            console.log('res delete', response.data)
             setDeleteModal(false)
             setUser(null)
         } catch (err) {

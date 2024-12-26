@@ -39,7 +39,6 @@ const LogIn = ({ toggleSidebar, reservation = false }) => {
     const onFinish = async (values) => {
         try {
             const response = await axios.post(url + signin, values)
-            console.log(response.data)
             if (response.status === 200) {
                 localStorage.setItem('token', response.data.token)
                 localStorage.setItem('refreshToken', response.data.refreshToken)
