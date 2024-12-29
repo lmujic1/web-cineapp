@@ -59,7 +59,9 @@ const UserTable = ({ type, selectable = false, actions = false }) => {
             const response = await axios.delete(`${superAdmin}/user/${user.userId}/deactivate-account`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
-            setDeleteModal(false)
+            setDeactivateModal(false)
+            setUser(null)
+
         } catch (err) {
             console.log(err);
         }
