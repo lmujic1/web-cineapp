@@ -13,16 +13,16 @@ const UserOptions = ({ setUserClick }) => {
         const token = localStorage.getItem('token');
 
         try {
-            const response = await axios.post( logout, {}, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            if (response.status === 200) {
+            // const response = await axios.post( logout, {}, {
+            //     headers: {
+            //         'Authorization': `Bearer ${token}`
+            //     }
+            // });
+            // if (response.status === 200) {
                 localStorage.clear()
                 navigate('/')
                 setUserClick(false)
-            }
+            // }
         } catch (error) {
             console.error(error);
         }
