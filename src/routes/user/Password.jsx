@@ -9,7 +9,7 @@ import { Input } from "../../components/Input";
 import Button from "../../components/Button";
 import Modal from "../../components/Modal";
 
-import { url, user } from "../../utils/api";
+import { user } from "../../utils/api";
 
 const Password = () => {
     const navigate = useNavigate();
@@ -46,7 +46,7 @@ const Password = () => {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await axios.put(url + user + "/change-password", {
+            const response = await axios.put( user + "/change-password", {
                 oldPassword: current,
                 newPassword: password,
                 passwordChanged: true

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Dropdown, DropdownItem } from "../../components/Dropdown";
 
-import { url, logout } from "../../utils/api";
+import { logout } from "../../utils/api";
 
 const UserOptions = ({ setUserClick }) => {
     const navigate = useNavigate();
@@ -13,7 +13,7 @@ const UserOptions = ({ setUserClick }) => {
         const token = localStorage.getItem('token');
 
         try {
-            const response = await axios.post(url + logout, {}, {
+            const response = await axios.post( logout, {}, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

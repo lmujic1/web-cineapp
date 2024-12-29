@@ -10,7 +10,7 @@ import Success from "../../components/Success"
 import { Input } from "../../components/Input"
 import Label from "../../components/Label";
 
-import { url, signin } from "../../utils/api";
+import { signin } from "../../utils/api";
 import PasswordReset from "./PasswordReset";
 
 const LogIn = ({ toggleSidebar, reservation = false }) => {
@@ -38,7 +38,7 @@ const LogIn = ({ toggleSidebar, reservation = false }) => {
 
     const onFinish = async (values) => {
         try {
-            const response = await axios.post(url + signin, values)
+            const response = await axios.post( signin, values)
             if (response.status === 200) {
                 localStorage.setItem('token', response.data.token)
                 localStorage.setItem('refreshToken', response.data.refreshToken)

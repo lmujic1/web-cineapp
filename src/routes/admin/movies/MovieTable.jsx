@@ -17,7 +17,7 @@ import { NoDataRow, Table, TableCell, TableHeaderCell, TableHeaderRow, TableRow 
 
 import { NumberOfElementsContext } from "../AdminPanel";
 
-import { url, movies, searchStatus, venues, currently, projections } from "../../../utils/api";
+import { movies, searchStatus, venues, currently, projections } from "../../../utils/api";
 
 const MovieTable = ({ type, selectable = false, actions = false }) => {
     const navigate = useNavigate();
@@ -62,7 +62,7 @@ const MovieTable = ({ type, selectable = false, actions = false }) => {
         try {
             const token = localStorage.getItem('token');
 
-            await axios.put(`${url}${movies}/update-status`, { movieIds, status }, {
+            await axios.put(`${movies}/update-status`, { movieIds, status }, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -115,7 +115,7 @@ const MovieTable = ({ type, selectable = false, actions = false }) => {
     };
 
     const fetchData = async () => {
-        let route = `${url}${movies}`
+        let route = `${movies}`
         if (type === "drafts") route += `${searchStatus}?status=DRAFT`
         else if (type === "currently") route += `${currently}?`
         else if (type === "upcoming") route += `/all-upcoming?`
@@ -128,7 +128,7 @@ const MovieTable = ({ type, selectable = false, actions = false }) => {
                 const moviesData = response.data.content;
                 for (const movie of moviesData) {
                     try {
-                        const projectionsResponse = await axios.get(`${url}${projections}/movie/${movie.movieId}`);
+                        const projectionsResponse = await axios.get(`${projections}/movie/${movie.movieId}`);
                         movie.projections = projectionsResponse.data;
                     } catch (error) {
                         console.log(error);
@@ -169,7 +169,7 @@ const MovieTable = ({ type, selectable = false, actions = false }) => {
 
     const getGenreList = async () => {
         try {
-            const response = await axios.get(`${url}${venues}/all`);
+            const response = await axios.get(`${venues}/all`);
             setVenueList(response.data);
         } catch (error) {
             console.error(error);

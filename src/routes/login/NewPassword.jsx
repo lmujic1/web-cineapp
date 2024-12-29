@@ -10,7 +10,7 @@ import Label from "../../components/Label";
 import Success from "../../components/Success";
 import EnterCode from "./EnterCode";
 
-import { url, passwordReset } from "../../utils/api";
+import { passwordReset } from "../../utils/api";
 
 const NewPassword = ({ toggleSidebar }) => {
     const [password, setPassword] = useState("");
@@ -31,7 +31,7 @@ const NewPassword = ({ toggleSidebar }) => {
 
     const onFinish = async (values) => {
         try {
-            const response = await axios.post(url + passwordReset + "/new-password", values)
+            const response = await axios.post( passwordReset + "/new-password", values)
             if (response.status === 200) {
                 localStorage.clear()
                 success()

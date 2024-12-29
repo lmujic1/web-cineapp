@@ -11,7 +11,7 @@ import Modal from "../../components/Modal";
 import Button from "../../components/Button";
 import { NumberOfElementsContext } from "./UserProfile";
 
-import { url, reservation } from "../../utils/api";
+import { reservation } from "../../utils/api";
 
 const PendingReservations = () => {
     const navigate = useNavigate();
@@ -27,7 +27,7 @@ const PendingReservations = () => {
 
         const fetchReservations = async () => {
             try {
-                const response = await axios.get(`${url}${reservation}/user`, {
+                const response = await axios.get(`${reservation}/user`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -61,7 +61,7 @@ const PendingReservations = () => {
         const token = localStorage.getItem("token");
         try {
             const response = await axios.delete(
-                `${url}${reservation}/${reservationId}`,
+                `${reservation}/${reservationId}`,
                 {
                     headers: {
                         'Authorization': `Bearer ${token}`

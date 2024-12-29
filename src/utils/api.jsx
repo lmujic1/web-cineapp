@@ -1,20 +1,20 @@
-const url = 'http://localhost:8080'
-const movies = '/api/movies'
-const venues = '/api/venues'
-const superAdmin = '/api/super-admin'
-const projections = '/api/projections'
-const genres = '/api/genres'
-const cities = '/api/cities'
+const API_URL = '/api'
+const movies = `${API_URL}/movies`
+const venues = `${API_URL}/venues`
+const superAdmin = `${API_URL}/super-admin`
+const projections = `${API_URL}/projections`
+const genres = `${API_URL}/genres`
+const cities = `${API_URL}/cities`
 const currently = '/currently'
 const upcoming = '/upcoming'
 const searchCurrently = '/search-currently'
 const searchUpcoming = '/search-upcoming'
 const searchStatus = '/search-by-status'
-const signin = '/api/auth/sign-in'
-const signup = '/api/auth/sign-up'
+const signin = `${API_URL}/auth/sign-in`
+const signup = `${API_URL}/auth/sign-up`
 const logout = '/logout'
-const user = '/api/user'
-const passwordReset = '/api/password-reset'
-const reservation = '/api/tickets'
+const user = `${API_URL}/user`
+const passwordReset = `${API_URL}/password-reset`
+const reservation = `${API_URL}/tickets`
 
-export { url, movies, venues, superAdmin, projections, genres, cities, currently, upcoming, searchCurrently, searchUpcoming, searchStatus, signin, signup, logout, user, passwordReset, reservation }
+export { API_URL, movies, venues, superAdmin, projections, genres, cities, currently, upcoming, searchCurrently, searchUpcoming, searchStatus, signin, signup, logout, user, passwordReset, reservation }

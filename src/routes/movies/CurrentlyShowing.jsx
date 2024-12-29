@@ -14,7 +14,7 @@ import Button from "../../components/Button";
 import Card from "../../components/Card";
 import Label from "../../components/Label";
 
-import { url, movies, venues, genres, cities, searchCurrently } from "../../utils/api";
+import { movies, venues, genres, cities, searchCurrently } from "../../utils/api";
 import { getFilterParams, getPaginationParams, handleFilterChange, handlePageChange } from "../../utils/utils";
 
 const CurrentlyShowing = () => {
@@ -59,7 +59,7 @@ const CurrentlyShowing = () => {
     }
 
     const getGenres = async () => {
-        axios.get(`${url}${genres}`)
+        axios.get(`${genres}`)
             .then(response => {
                 setGenreList(response.data)
             }).catch(error => {
@@ -69,7 +69,7 @@ const CurrentlyShowing = () => {
     }
 
     const getCities = () => {
-        axios.get(`${url}${cities}`)
+        axios.get(`${cities}`)
             .then(response => {
                 setCityList(response.data)
             }).catch(error => {
@@ -104,7 +104,7 @@ const CurrentlyShowing = () => {
     }
 
     const getVenues = async (city) => {
-        const fullUrl = city ? `${url}${venues}/city/${city}` : `${url}${venues}/all`
+        const fullUrl = city ? `${venues}/city/${city}` : `${venues}/all`
         axios.get(fullUrl)
             .then(response => setVenueList(response.data))
             .catch(error => {
@@ -114,7 +114,7 @@ const CurrentlyShowing = () => {
     }
 
     const loadMovies = async () => {
-        let route = url + movies + searchCurrently;
+        let route =  movies + searchCurrently;
         const search = searchParams.size > 0 ? decodeURIComponent(`?${searchParams}`) : ''
         const pagination = getPaginationParams(searchParams)
         setPagination(pagination)

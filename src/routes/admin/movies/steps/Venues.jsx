@@ -10,7 +10,7 @@ import Modal from "../../../../components/Modal";
 
 import { StepperContext } from "../../../../components/Stepper";
 
-import { url, venues, cities } from "../../../../utils/api";
+import { venues, cities } from "../../../../utils/api";
 
 const Venues = () => {
     const [cityList, setCityList] = useState([]);
@@ -35,7 +35,7 @@ const Venues = () => {
     }, [projectionsData]);
 
     const getCities = () => {
-        axios.get(`${url}${cities}`)
+        axios.get(`${cities}`)
             .then(response => setCityList(response.data))
             .catch(error => {
                 console.error(error);
@@ -57,7 +57,7 @@ const Venues = () => {
     const getVenues = async (city) => {
         if (venueLists[city]) return;
 
-        const fullUrl = `${url}${venues}/city/${city}`;
+        const fullUrl = `${venues}/city/${city}`;
         axios.get(fullUrl)
             .then(response => {
                 setVenueLists(prev => ({

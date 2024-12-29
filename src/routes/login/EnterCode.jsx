@@ -8,7 +8,7 @@ import Logo from "../../components/Logo";
 import NewPassword from "./NewPassword";
 import PasswordReset from "./PasswordReset";
 
-import { url, passwordReset } from "../../utils/api";
+import { passwordReset } from "../../utils/api";
 import { useCountDown } from "../../utils/utils";
 
 const EnterCode = ({ toggleSidebar }) => {
@@ -34,7 +34,7 @@ const EnterCode = ({ toggleSidebar }) => {
 
     const onFinish = async (values) => {
         try {
-            const response = await axios.post(url + passwordReset + "/check-code", values)
+            const response = await axios.post( passwordReset + "/check-code", values)
             if (response.status === 200) {
                 localStorage.setItem("token", response.data)
                 success()

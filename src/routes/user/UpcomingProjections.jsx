@@ -5,7 +5,7 @@ import { format } from "date-fns";
 import Image from "../../components/Image";
 import { Link } from "react-router-dom";
 
-import { url, reservation } from "../../utils/api";
+import { reservation } from "../../utils/api";
 
 const UpcomingProjections = () => {
     const [reservations, setReservations] = useState([])
@@ -15,7 +15,7 @@ const UpcomingProjections = () => {
 
         const fetchReservations = async () => {
             try {
-                const response = await axios.get(`${url}${reservation}/user/upcoming-projections`, {
+                const response = await axios.get(`${reservation}/user/upcoming-projections`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 

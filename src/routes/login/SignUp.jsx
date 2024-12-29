@@ -10,7 +10,7 @@ import LogIn from "./LogIn";
 import Success from "../../components/Success";
 import Label from "../../components/Label";
 
-import { url, signup } from "../../utils/api";
+import { signup } from "../../utils/api";
 
 const SignUp = ({ toggleSidebar }) => {
     const [email, setEmail] = useState("");
@@ -43,7 +43,7 @@ const SignUp = ({ toggleSidebar }) => {
 
     const onFinish = async (values) => {
         try {
-            const response = await axios.post(url + signup, values)
+            const response = await axios.post( signup, values)
             if (response.status === 200) {
                 success()
             }

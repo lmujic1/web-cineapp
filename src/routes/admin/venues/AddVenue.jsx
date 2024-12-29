@@ -9,7 +9,7 @@ import Label from "../../../components/Label";
 import { Input } from "../../../components/Input";
 import { LabeledDropdown, DropdownItem } from "../../../components/Dropdown";
 
-import { url, cities, venues } from "../../../utils/api";
+import { cities, venues } from "../../../utils/api";
 
 const AddVenue = () => {
     const navigate = useNavigate();
@@ -35,7 +35,7 @@ const AddVenue = () => {
     useEffect(() => {
         const fetchCities = async () => {
             try {
-                const response = await axios.get(`${url}${cities}`);
+                const response = await axios.get(`${cities}`);
                 setCityList(response.data);
             } catch (error) {
                 console.error("Error loading cities:", error);
@@ -88,7 +88,7 @@ const AddVenue = () => {
 
         if (action === "delete") {
             try {
-                const response = await axios.delete(`${url}${venues}/${venueRequest.id}`, {
+                const response = await axios.delete(`${venues}/${venueRequest.id}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -110,7 +110,7 @@ const AddVenue = () => {
             
 
             try {
-                const requestUrl = `${url}${venues}${venueRequest.id ? `/${venueRequest.id}` : ""}`;
+                const requestUrl = `${venues}${venueRequest.id ? `/${venueRequest.id}` : ""}`;
                 const response = await axios.post(requestUrl, formData, {
                     headers: { Authorization: `Bearer ${token}` },
                 });

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
-import { url, cities, user, superAdmin } from "../../../utils/api";
+import { cities, user, superAdmin } from "../../../utils/api";
 import Label from "../../../components/Label";
 import Button from "../../../components/Button";
 import { Input } from "../../../components/Input";
@@ -30,7 +30,7 @@ const AddAdmin = () => {
     useEffect(() => {
         const fetchCities = async () => {
             try {
-                const response = await axios.get(`${url}${cities}`);
+                const response = await axios.get(`${cities}`);
                 setCityList(response.data);
             } catch (error) {
                 console.error("Error loading cities:", error);
@@ -39,7 +39,7 @@ const AddAdmin = () => {
 
         const fetchCountries = async () => {
             try {
-                const response = await axios.get(`${url}/api/countries`);
+                const response = await axios.get(`/api/countries`);
                 setCountryList(response.data);
             } catch (error) {
                 console.error("Error loading cities:", error);
@@ -78,7 +78,7 @@ const AddAdmin = () => {
             formData.append("user", new Blob([JSON.stringify(userRequest)], { type: "application/json" }));
 
             try {
-                const requestUrl = `${url}${superAdmin}/user/new`;
+                const requestUrl = `${superAdmin}/user/new`;
                 const response = await axios.post(requestUrl, formData, {
                     headers: { Authorization: `Bearer ${token}` },
                 });

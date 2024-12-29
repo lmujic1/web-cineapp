@@ -7,7 +7,7 @@ import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import Image from "../../components/Image";
 import Tooltip from "../../components/Tooltip";
 
-import { url, reservation } from "../../utils/api";
+import { reservation } from "../../utils/api";
 
 const PastProjections = () => {
     const [reservations, setReservations] = useState([])
@@ -18,7 +18,7 @@ const PastProjections = () => {
 
         const fetchReservations = async () => {
             try {
-                const response = await axios.get(`${url}${reservation}/user/past-projections`, {
+                const response = await axios.get(`${reservation}/user/past-projections`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 

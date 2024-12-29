@@ -11,7 +11,7 @@ import Image from "../../components/Image";
 import Modal from "../../components/Modal";
 import { LabeledDropdown, DropdownItem } from "../../components/Dropdown";
 
-import { url, cities, user } from "../../utils/api";
+import { cities, user } from "../../utils/api";
 
 const PersonalInformation = () => {
     const [editable, setEditable] = useState(false);
@@ -32,7 +32,7 @@ const PersonalInformation = () => {
     useEffect(() => {
         const fetchCities = async () => {
             try {
-                const response = await axios.get(`${url}${cities}`);
+                const response = await axios.get(`${cities}`);
                 setCityList(response.data);
             } catch (error) {
                 console.error("Error loading cities:", error);
@@ -41,7 +41,7 @@ const PersonalInformation = () => {
 
         const fetchCountries = async () => {
             try {
-                const response = await axios.get(`${url}/api/countries`);
+                const response = await axios.get(`/api/countries`);
                 setCountryList(response.data);
             } catch (error) {
                 console.error("Error loading cities:", error);
@@ -86,7 +86,7 @@ const PersonalInformation = () => {
 
         if (action === "deactivate") {
             try {
-                const response = await axios.put(`${url}${user}/deactivate-account`, {}, {
+                const response = await axios.put(`${user}/deactivate-account`, {}, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -105,7 +105,7 @@ const PersonalInformation = () => {
             formData.append("user", new Blob([JSON.stringify(userRequest)], { type: "application/json" }));
 
             try {
-                const requestUrl = `${url}${user}/change-info`;
+                const requestUrl = `${user}/change-info`;
                 const response = await axios.put(requestUrl, formData, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
@@ -150,7 +150,7 @@ const PersonalInformation = () => {
 
         const fetchUserDetails = async () => {
             try {
-                const response = await axios.get(`${url}${user}/details`, {
+                const response = await axios.get(`${user}/details`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 

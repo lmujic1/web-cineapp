@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-import { url, venues, movies, searchCurrently } from '../../utils/api';
+import { venues, movies, searchCurrently } from '../../utils/api';
 import Image from '../../components/Image';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
@@ -22,7 +22,7 @@ const VenueDetails = () => {
     useEffect(() => {
         const fetchVenueDetails = async () => {
             try {
-                const venueResponse = await axios.get(`${url}${venues}/${id}`);
+                const venueResponse = await axios.get(`${venues}/${id}`);
                 setVenue(venueResponse.data);
             } catch (error) {
                 console.error('Error fetching venue details:', error);
@@ -35,7 +35,7 @@ const VenueDetails = () => {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const route = `${url}${movies}${searchCurrently}`;
+                const route = `${movies}${searchCurrently}`;
                 const search = `?venue=${id}&page=${pagination.page}&size=${pagination.size}`;
                 const response = await axios.get(`${route}${search}`);
                 const data = response.data;

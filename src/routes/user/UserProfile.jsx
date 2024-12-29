@@ -6,7 +6,7 @@ import axios from "axios";
 
 import SideBar from "../../components/SideBar";
 
-import { reservation, url } from "../../utils/api";
+import { reservation } from "../../utils/api";
 
 export const NumberOfElementsContext = createContext();
 
@@ -16,7 +16,7 @@ const UserProfile = () => {
     const getNumberOfReservations = async () => {
         const token = localStorage.getItem("token");
         try {
-            const result = await axios.get(`${url}${reservation}/user/count`, {
+            const result = await axios.get(`${reservation}/user/count`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

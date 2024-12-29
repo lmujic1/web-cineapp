@@ -11,7 +11,7 @@ import Button from "../../components/Button";
 import { Input } from "../../components/Input";
 
 import { getFilterParams, getPaginationParams, handleFilterChange, handlePageChange } from "../../utils/utils";
-import { url, venues, cities } from "../../utils/api";
+import { venues, cities } from "../../utils/api";
 
 const AllVenues = () => {
     const [venueList, setVenueList] = useState([]);
@@ -26,7 +26,7 @@ const AllVenues = () => {
 
     const loadCities = async () => {
         try {
-            const response = await axios.get(`${url}${cities}`);
+            const response = await axios.get(`${cities}`);
             setCityList(response.data);
         } catch (error) {
             console.error(error);
@@ -35,7 +35,7 @@ const AllVenues = () => {
 
     const loadVenues = async () => {
         try {
-            const route = `${url}${venues}/search`;
+            const route = `${venues}/search`;
             const search = searchParams.toString() ? `?${searchParams.toString()}` : '';
             const pagination = getPaginationParams(searchParams);
             setPagination(pagination);

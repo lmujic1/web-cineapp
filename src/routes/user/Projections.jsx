@@ -6,7 +6,7 @@ import axios from "axios";
 import { TabGroup, Tab, TabContent } from "../../components/Tab";
 
 import { lastPathPart } from "../../utils/utils";
-import { url, reservation } from "../../utils/api";
+import { reservation } from "../../utils/api";
 
 const Projections = () => {
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Projections = () => {
 
         const fetchNumberOfElements = async () => {
             try {
-                const response = await axios.get(`${url}${reservation}/count-elements`, {
+                const response = await axios.get(`${reservation}/count-elements`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 

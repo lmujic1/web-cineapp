@@ -9,7 +9,7 @@ import MovieCard from "../../components/card/MovieCard";
 import Image from "../../components/Image";
 import VideoPlayer from "../../components/VideoPlayer";
 
-import { url, movies, cities, venues, projections } from "../../utils/api";
+import { movies, cities, venues, projections } from "../../utils/api";
 import Coming from "../../components/Coming";
 import MovieProjections from "../../components/MovieProjections";
 
@@ -40,7 +40,7 @@ const MovieDetails = () => {
     }
 
     const getCities = () => {
-        axios.get(`${url}${cities}`)
+        axios.get(`${cities}`)
             .then(response => {
                 setCityList(response.data)
             }).catch(error => {
@@ -52,7 +52,7 @@ const MovieDetails = () => {
     }
 
     const getVenues = async (city) => {
-        const fullUrl = city ? `${url}${venues}/city/${city}` : `${url}${venues}/all`
+        const fullUrl = city ? `${venues}/city/${city}` : `${venues}/all`
         axios.get(fullUrl)
             .then(response => setVenueList(response.data))
             .catch(error => {
@@ -62,7 +62,7 @@ const MovieDetails = () => {
     }
 
     const getMovie = async () => {
-        axios.get(`${url}${movies}/${id}`)
+        axios.get(`${movies}/${id}`)
             .then(response => {
                 setMovie(response.data)
                 setUpcoming(new Date(format(response.data.projectionStart, "yyyy-MM-dd")) >= add(new Date(), 10))
@@ -74,7 +74,7 @@ const MovieDetails = () => {
     }
 
     const getSeeAlsoMovies = async () => {
-        const fullUrl = `${url}${movies}/similar?movie=${movie.movieId}&page=${moviePagination.page}&size=${moviePagination.size}`
+        const fullUrl = `${movies}/similar?movie=${movie.movieId}&page=${moviePagination.page}&size=${moviePagination.size}`
         axios.get(fullUrl)
             .then(response => {
                 setSeeAlsoMovies(response.data.content)
@@ -87,7 +87,7 @@ const MovieDetails = () => {
     }
 
     const getProjections = async (venueId) => {
-        axios.get(`${url}${projections}?movie=${movie.movieId}&venue=${venueId}&date=${filterParams.startDate}`)
+        axios.get(`${projections}?movie=${movie.movieId}&venue=${venueId}&date=${filterParams.startDate}`)
             .then(response =>{
                 setProjectionList(response.data)
     })

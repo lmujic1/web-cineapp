@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faEllipsis, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsis, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import Badge from '../../../components/Badge';
 import Modal from '../../../components/Modal';
@@ -11,7 +11,7 @@ import Button from '../../../components/Button';
 import { NoDataRow, Table, TableCell, TableHeaderCell, TableHeaderRow, TableRow } from '../../../components/Table';
 
 
-import { url, superAdmin } from "../../../utils/api";
+import { API_URL, superAdmin } from "../../../utils/api";
 import { Dropdown, DropdownItem } from '../../../components/Dropdown';
 
 const UserTable = ({ type, selectable = false, actions = false }) => {
@@ -42,7 +42,7 @@ const UserTable = ({ type, selectable = false, actions = false }) => {
         try {
             const token = localStorage.getItem("token");
 
-            const response = await axios.get(url + superAdmin + "/users?page=" + pagination.page + "&size=" + pagination.size, {
+            const response = await axios.get(superAdmin + "/users?page=" + pagination.page + "&size=" + pagination.size, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setUserList([ ...response.data.content]);
@@ -56,7 +56,7 @@ const UserTable = ({ type, selectable = false, actions = false }) => {
     const deactivateUser = async () => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.delete(`${url}${superAdmin}/user/${user.userId}`, {
+            const response = await axios.delete(`${superAdmin}/user/${user.userId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -81,7 +81,7 @@ const UserTable = ({ type, selectable = false, actions = false }) => {
     const deleteUser = async () => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.delete(`${url}${superAdmin}/user/${user.userId}`, {
+            const response = await axios.delete(`${superAdmin}/user/${user.userId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 

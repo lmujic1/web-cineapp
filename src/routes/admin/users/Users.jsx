@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { url, superAdmin } from "../../../utils/api";
+import { superAdmin } from "../../../utils/api";
 import Button from "../../../components/Button";
 import { List, ListItem } from "../../../components/List";
 import UserTable from "./UserTable";

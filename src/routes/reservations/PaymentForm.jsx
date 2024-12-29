@@ -6,7 +6,7 @@ import axios from "axios";
 
 import Label from "../../components/Label";
 import Button from "../../components/Button";
-import { url, reservation } from "../../utils/api";
+import { reservation } from "../../utils/api";
 
 const PaymentForm = ({ totalPrice, handlePayment }) => {
     const stripe = useStripe();
@@ -17,7 +17,7 @@ const PaymentForm = ({ totalPrice, handlePayment }) => {
     const createPaymentIntent = async (price) => {
         const token = localStorage.getItem("token");
         const values = { amount: price };
-        const response = await axios.post(`${url}${reservation}/create-payment-intent`, values, {
+        const response = await axios.post(`${reservation}/create-payment-intent`, values, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

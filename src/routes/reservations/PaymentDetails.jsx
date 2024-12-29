@@ -11,7 +11,7 @@ import Button from "../../components/Button";
 import CreditCard from "../../components/CreditCard";
 import PaymentForm from "./PaymentForm";
 
-import { url, reservation } from "../../utils/api";
+import { reservation } from "../../utils/api";
 
 const savedCards = [
     { cardNumber: "1234 5678 9101 1121", expiryDate: "12/24", cvv: "123", type: "visa" },
@@ -33,7 +33,7 @@ const PaymentDetails = () => {
 
             if (!reservationId) {
                 response = await axios.post(
-                    `${url}${reservation}`,
+                    `${reservation}`,
                     {
                         date,
                         projectionId: projection.projectionId,
@@ -49,7 +49,7 @@ const PaymentDetails = () => {
                 )
             } else {
                 response = await axios.put(
-                    `${url}${reservation}/${reservationId}/buy-ticket`,
+                    `${reservation}/${reservationId}/buy-ticket`,
                     {},
                     {
                         headers: {

@@ -7,7 +7,7 @@ import Button from "../../../components/Button";
 import { NumberOfElementsContext } from "../AdminPanel";
 
 import { lastPathPart } from "../../../utils/utils";
-import { movies, url } from "../../../utils/api";
+import { movies } from "../../../utils/api";
 
 const Movies = () => {
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Movies = () => {
 
     const getNumberOfElements = async () => {
         try {
-            const result = await axios.get(`${url}${movies}/count-elements`);
+            const result = await axios.get(`${movies}/count-elements`);
             setNumberOfElements(result.data);
         } catch (err) {
             console.log(err)

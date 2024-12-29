@@ -13,7 +13,7 @@ import Venues from './steps/Venues';
 import Modal from '../../../components/Modal';
 import { StepperContext } from '../../../components/Stepper';
 
-import { url, genres, movies } from '../../../utils/api';
+import { genres, movies } from '../../../utils/api';
 
 const AddMovie = () => {
     const navigate = useNavigate();
@@ -165,7 +165,7 @@ const AddMovie = () => {
         }
 
         try {
-            const response = await axios.post(`${url}${movies}/${id}/projection`, projectionsData, {
+            const response = await axios.post(`${movies}/${id}/projection`, projectionsData, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -200,7 +200,7 @@ const AddMovie = () => {
             return;
         }
         try {
-            const response = await axios.post(`${url}${movies}/${id}/add-files`, formData, {
+            const response = await axios.post(`${movies}/${id}/add-files`, formData, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 }
@@ -219,7 +219,7 @@ const AddMovie = () => {
             const deleteRequest = detailsData.deleteImages;
 
             const response = await axios.delete(
-                `${url}${movies}/${id}/images`,
+                `${movies}/${id}/images`,
                 {
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -243,7 +243,7 @@ const AddMovie = () => {
     };
 
     const deleteWriters = async (token, id) => {
-        const response = await axios.delete(`${url}${movies}/${id}/delete-writers`, {
+        const response = await axios.delete(`${movies}/${id}/delete-writers`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -259,7 +259,7 @@ const AddMovie = () => {
     };
 
     const deleteActors = async (token, id) => {
-        const response = await axios.delete(`${url}${movies}/${id}/delete-actors`, {
+        const response = await axios.delete(`${movies}/${id}/delete-actors`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -284,7 +284,7 @@ const AddMovie = () => {
         }
 
         try {
-            const response = await axios.post(`${url}${movies}/${id}/add-details`, formData, {
+            const response = await axios.post(`${movies}/${id}/add-details`, formData, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -331,7 +331,7 @@ const AddMovie = () => {
         const token = localStorage.getItem('token');
         try {
             if (updatedMovieData.id === undefined) {
-                const response = await axios.post(url + movies, updatedMovieData, {
+                const response = await axios.post( movies, updatedMovieData, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -342,7 +342,7 @@ const AddMovie = () => {
                     navigate("/admin-panel/movies");
                 }
             } else {
-                const response = await axios.post(url + movies + "/" + updatedMovieData.id, updatedMovieData, {
+                const response = await axios.post( movies + "/" + updatedMovieData.id, updatedMovieData, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -401,7 +401,7 @@ const AddMovie = () => {
 
     const getGenreList = async () => {
         try {
-            const response = await axios.get(`${url}${genres}`);
+            const response = await axios.get(`${genres}`);
             setGenreList(response.data);
         } catch (error) {
             console.error(error);

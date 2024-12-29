@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import VenueCard from "../../../components/card/VenueCard";
-import { url, venues } from "../../../utils/api";
+import { venues } from "../../../utils/api";
 import Button from "../../../components/Button";
 
 const Venues = () => {
@@ -16,7 +16,7 @@ const Venues = () => {
 
     const fetchResults = async () => {
         try {
-            const response = await axios.get(url + venues + "?page=" + currentPage + "&size=" + postsPerPage);
+            const response = await axios.get(venues + "?page=" + currentPage + "&size=" + postsPerPage);
             if (currentPage > 1)
                 setVenueList(pre => [...pre, ...response.data.content]);
             else {

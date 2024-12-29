@@ -8,7 +8,7 @@ import SeatGuide from "../../components/SeatGuide";
 import CinemaSeats from "../../components/CinemaSeats";
 import Button from "../../components/Button";
 
-import { url, reservation } from "../../utils/api";
+import { reservation } from "../../utils/api";
 import Modal from "../../components/Modal";
 
 const Reservation = () => {
@@ -49,7 +49,7 @@ const Reservation = () => {
         const token = localStorage.getItem("token")
         let allSeats = []
         try {
-            const response = await axios.get(`${url}${reservation}/projection/${projection.projectionId}`, { 
+            const response = await axios.get(`${reservation}/projection/${projection.projectionId}`, { 
                     params: {
                         date: (new Date(date)).toISOString().substring(0, 10)
                     },
@@ -65,7 +65,7 @@ const Reservation = () => {
         }
 
         // try {
-        //     const response_2 = await axios.get(`${url}${reservation}/projection/${projection.projectionId}`, { 
+        //     const response_2 = await axios.get(`${reservation}/projection/${projection.projectionId}`, { 
         //             params: {
         //                 date: (new Date(date)).toISOString().substring(0, 10)
         //             },
@@ -94,7 +94,7 @@ const Reservation = () => {
     const onFinish = async (values) => {
         try {
             const token = localStorage.getItem("token")
-            const response = await axios.post(url + reservation, values, {
+            const response = await axios.post( reservation, values, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

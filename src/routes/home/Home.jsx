@@ -8,18 +8,19 @@ import MovieList from "../list/MovieList";
 import VenueList from "../list/VenueList";
 
 import { createClassName } from "../../utils/utils";
-import { url, movies, venues, currently, upcoming } from "../../utils/api";
+import { movies, venues, currently, upcoming } from "../../utils/api";
 
 const Home = () => {
-  const routeCurrently = url + movies + currently;
-  const routeUpcoming = url + movies + upcoming;
-  const routeVenueList = url + venues;
+  const routeCurrently = movies + currently;
+  const routeUpcoming = movies + upcoming;
+  const routeVenueList = venues;
   const [coverMovies, setCoverMovies] = useState([]);
   const [venueList, setVenueList] = useState([]);
   const location = useLocation();
   const navigate = useNavigate()
 
   const loadMovies = async (page, size) => {
+    console.log('url', routeCurrently);
     await axios.get(routeCurrently + "?page=" + page + "&size=" + size).then((res) =>
       setCoverMovies(res.data.content)).catch((err) => console.log(err))
   }
