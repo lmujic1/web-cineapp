@@ -56,10 +56,9 @@ const UserTable = ({ type, selectable = false, actions = false }) => {
     const deactivateUser = async () => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.delete(`${superAdmin}/user/${user.userId}`, {
+            const response = await axios.delete(`${superAdmin}/user/${user.userId}/deactivate-account`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
-
             setDeleteModal(false)
         } catch (err) {
             console.log(err);
